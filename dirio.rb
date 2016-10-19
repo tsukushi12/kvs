@@ -1,7 +1,8 @@
 #!/home/pi/.rbenv/versions/2.3.1/lib/ruby
 
 #{key: :value}
-require "digest/md5"
+require 'digest/md5'
+require 'config.rb'
 
 class DirIO
 
@@ -18,7 +19,7 @@ class DirIO
     path.insert(17, "/")
     path.insert(26, "/")
 
-    "./db/" + path
+    Config::DBDir + path
   end
 end
 
