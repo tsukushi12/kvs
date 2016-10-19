@@ -4,14 +4,14 @@
 
 class FileIO < DirIO
 
-	initialize(key, value)
+	def initialize(key, value)
 		@value = value
 		super key
 	end
 
-	
+	def	
 
-
+	end
 
 end
 
