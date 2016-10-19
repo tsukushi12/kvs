@@ -10,12 +10,14 @@ class FileIO < DirIO
 	end
 
 	def cleate
-		@path
+		File.open(@path, "w"){|f|
+			f.write(value)
+		}
 	end
 
 
 	def delete
-
+		
 	end
 end
 

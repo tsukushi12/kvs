@@ -10,8 +10,8 @@ class DirIO
 
   def initialize(key)
     @key = key
-    @path = parse(@key)
-    dir_get_or_create
+    @dirpath = parse(@key)
+    @dirtipe = dir_get_or_create
   end
 
   def parse(key)
@@ -25,7 +25,7 @@ class DirIO
 
   def dir_get_or_create(path)
     if Dir.exists?(path)
-      0
+      1
     else
       Dir.mkdir(path)
     end
