@@ -2,12 +2,14 @@
 
 #{key: :value}
 
-class FileIO
+class FileIO < DirIO
 
-	initialize()
-		
-
+	initialize(key, value)
+		@value = value
+		super key
 	end
+
+	
 
 
 

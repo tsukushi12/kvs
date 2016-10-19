@@ -3,20 +3,22 @@
 #{key: :value}
 require "digest/md5"
 
-class Dir
+class DirIO
 
-	attr_getter :key, :path
+  attr_getter :key, :path
 
-	def initialize(key)
-		@key = key
-		@path = parse(@key)
-	end
+  def initialize(key)
+    @key = key
+    @path = parse(@key)
+  end
 
-	def parse(key)
-		path = Digest::MD5.hexdigest(key)
-		path.insert(8, "/")
-		path.insert(17, "/")
-		path.insert(26, "/")
-	end
+  def parse(key)
+    path = Digest::MD5.hexdigest(key)
+    path.insert(8, "/")
+    path.insert(17, "/")
+    path.insert(26, "/")
+
+    "./db/" + path
+  end
 end
 
