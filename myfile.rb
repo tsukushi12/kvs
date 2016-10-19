@@ -9,12 +9,20 @@ class MyFile < File
 
   attr_reader :key, :path
 
-  def initialize(key, mode = "a+")
+  def initialize(key, mode = "r")
     @key = key
     @filepath = parse(@key)
     mkdir(@filepath)
 
     super(@filepath, mode)
+  end
+
+  def open(key, mode = "r")
+    @key = key
+    @filepath = parse(@key)
+    mkdir(@filepath)
+
+    super(@filepath, mode){ yield }
   end
 
   def parse(key)
@@ -24,6 +32,12 @@ class MyFile < File
     path.insert(26, "/")
 
     Config::DBDir + path
+  end
+
+
+  def delete
+
+
   end
 
   private
