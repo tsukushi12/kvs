@@ -11,6 +11,7 @@ class DirIO
   def initialize(key)
     @key = key
     @path = parse(@key)
+    dir_get_or_create
   end
 
   def parse(key)
@@ -20,6 +21,14 @@ class DirIO
     path.insert(26, "/")
 
     Config::DBDir + path
+  end
+
+  def dir_get_or_create(path)
+    if Dir.exists?(path)
+      0
+    else
+      Dir.mkdir(path)
+    end
   end
 end
 

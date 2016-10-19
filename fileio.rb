@@ -9,9 +9,13 @@ class FileIO < DirIO
 		super key
 	end
 
-	def	
-
+	def cleate
+		@path
 	end
 
+
+	def delete
+
+	end
 end
 
