@@ -1,17 +1,18 @@
 #!/home/pi/.rbenv/versions/2.3.1/lib/ruby
 
 #{key: :value}
+
 require 'digest/md5'
 require './config.rb'
 
-class DirIO
+class File
 
   attr_reader :key, :path
 
   def initialize(key)
     @key = key
-    @dirpath = parse(@key)
-    @dirtipe = dir_get_or_create
+    @filepath = parse(@key)
+    super @filepath, "a+"
   end
 
   def parse(key)
@@ -23,11 +24,11 @@ class DirIO
     Config::DBDir + path
   end
 
-  def dir_get_or_create(path)
-    if Dir.exists?(path)
-      1
-    else
-      Dir.mkdir(path)
+  private
+  def mkdir(path)
+    dir = File.dirname(path)
+    unless Dir.exists?(dir)
+      FileUtils.mkdir_p(dir)
     end
   end
 end

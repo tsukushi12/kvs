@@ -9,12 +9,11 @@ class FileIO < DirIO
 		super key
 	end
 
-	def cleate
+	def create
 		File.open(@path, "w"){|f|
 			f.write(value)
 		}
 	end
-
 
 	def delete
 		
