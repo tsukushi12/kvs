@@ -2,11 +2,11 @@
 
 #{key: :value}
 require 'digest/md5'
-require 'config.rb'
+require './config.rb'
 
 class DirIO
 
-  attr_getter :key, :path
+  attr_reader :key, :path
 
   def initialize(key)
     @key = key
