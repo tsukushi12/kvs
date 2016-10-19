@@ -4,15 +4,17 @@
 
 require 'digest/md5'
 require './config.rb'
-
-class File
+require 'fileutils'
+class MyFile < File
 
   attr_reader :key, :path
 
-  def initialize(key)
+  def initialize(key, mode = "a+")
     @key = key
     @filepath = parse(@key)
-    super @filepath, "a+"
+    mkdir(@filepath)
+
+    super(@filepath, mode)
   end
 
   def parse(key)
