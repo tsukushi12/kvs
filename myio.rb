@@ -5,15 +5,32 @@
 require './myfile.rb'
 require 'json'
 
-module MyIO
+class MyIO
 	@now = Time.now.strftime("%s%L")
 	@orders = [:create, :get, :delete, :destroy]
+
+	def initialize(key = nil, value = nil)
+		@key = []
+		@value = []
+
+		add()
+	end
+
+	def add(key, value)
+		@key << key
+		@value << value
+	end
+
+	def []=
+
+
+
 
 	class << self
 		def create(hash)
 			kv_parse(hash){|key, value|
 				MyFile.open(key, "a+"){|f|	
-					f.write(value.to_json + " " + @now)
+					f.write(value.to_json + " " + @now + "\n")
 				}
 			}
 		end
