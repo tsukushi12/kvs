@@ -12,8 +12,8 @@ class MyIO
 	def initialize(key = nil, value = nil)
 		@key = []
 		@value = []
-
-		add()
+		
+		add(key, value) if key && value
 	end
 
 	def add(key, value)
@@ -21,10 +21,9 @@ class MyIO
 		@value << value
 	end
 
-	def []=
-
-
-
+	def find(num)
+		@key[num], @value[num]
+	end
 
 	class << self
 		def create(hash)
