@@ -35,9 +35,8 @@ class MyFile < File
   end
 
 
-  def delete
-
-
+  def unlink(key)
+    super parse(key)
   end
 
   private
@@ -48,4 +47,3 @@ class MyFile < File
     end
   end
 end
-
