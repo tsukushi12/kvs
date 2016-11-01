@@ -5,7 +5,7 @@
 #require 'lib/myfile.rb'
 require 'json'
 #require 'lib/io_module.rb'
-module Mydb
+
 	class MyIO
 
 		def initialize(key = nil, *value)
@@ -34,4 +34,3 @@ module Mydb
 			include IOModule
 		end
 	end
-end

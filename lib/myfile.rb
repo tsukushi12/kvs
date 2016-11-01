@@ -3,30 +3,36 @@
 #{key: :value}
 
 require 'digest/md5'
-require 'config.rb'
+require_relative '../config.rb'
 require 'fileutils'
-module Mydb
+
   class MyFile < File
 
     attr_reader :key, :path
 
     def initialize(key, mode = "r")
       @key = key
-      @filepath = parse(@key)
+      @filepath = MyFile.parse(@key)
       mkdir(@filepath)
+#      touch(@filepath)
 
       super(@filepath, mode)
     end
 
     def open(key, mode = "r")
       @key = key
-      @filepath = parse(@key)
+      @filepath = MyFile.parse(@key)
       mkdir(@filepath)
+#      touch(@filepath)
 
       super(@filepath, mode){ yield }
     end
 
-    def parse(key)
+    def unlink(key)
+      super parse(key)
+    end
+
+    def self.parse(key)
       path = Digest::MD5.hexdigest(key)
       path.insert(8, "/")
       path.insert(17, "/")
@@ -35,9 +41,9 @@ module Mydb
       Config::DBDir + path
     end
 
-
-    def unlink(key)
-      super parse(key)
+    def self.exists?(key)
+      path = parse(key)
+      File.exists?(path)
     end
 
     private
@@ -47,5 +53,10 @@ module Mydb
         FileUtils.mkdir_p(dir)
       end
     end
+
+    def touch(path)
+        unless File.exists?(path)
+          FileUtils.touch(path)
+        end
+    end
   end
-end

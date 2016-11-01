@@ -1,4 +1,4 @@
-module Mydb
+
   module IOModule
 
 
@@ -11,13 +11,21 @@ module Mydb
     end
 
     def get(key, any = 1)
-      MyFile.open(key){|f|
-        f.readline[-any..-1]
-      }
+      if exists?(key)
+        f = MyFile.open(key){|f|
+          f.readlines[-any..-1].join("\n")
+        }
+      else
+        "not found such key"
+      end
+    end
+
+    def exists?(key)
+        MyFile.exists?(key)
     end
 
     def destroy(key)
-      MyFile.(key)
+      MyFile.unlink(key)
     end
 
     private
@@ -36,4 +44,3 @@ module Mydb
       Time.now.strftime("%s%L")
     end
   end
-end
