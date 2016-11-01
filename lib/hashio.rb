@@ -1,5 +1,5 @@
 
-require './io_module'
+#require 'lib/io_module'
 
 class Hash
   def save
