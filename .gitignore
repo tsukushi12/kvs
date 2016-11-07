@@ -1,2 +1,5 @@
 # Ignore DB files
-/db/[\w]*/
+/db/*
+
+/.idea
+/.cshrc
