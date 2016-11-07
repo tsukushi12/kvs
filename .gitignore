@@ -1,3 +1,2 @@
 # Ignore DB files
-/db/*/
-!/db
+/db/[\w]*/
