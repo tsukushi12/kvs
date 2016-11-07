@@ -19,16 +19,7 @@ require 'fileutils'
       super(@filepath, mode)
     end
 
-    def open(key, mode = "r")
-      @key = key
-      @filepath = MyFile.parse(@key)
-      mkdir(@filepath)
-#      touch(@filepath)
-
-      super(@filepath, mode){ yield }
-    end
-
-    def unlink(key)
+    def self.unlink(key)
       super parse(key)
     end
 
