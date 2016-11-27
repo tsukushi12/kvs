@@ -1,11 +1,11 @@
-
+require 'json'
   module IOModule
 
 
     def create(hash)
       kv_parse(hash){|key, value|
         MyFile.open(key, "a+"){|f|
-          f.write(value.to_json + " " + now + "\n")
+          f.puts({key => value}.to_json)
         }
       }
     end
@@ -39,8 +39,5 @@
           yield(key, values)
         end
       end
-    end
-    def now
-      Time.now.strftime("%s%L")
     end
   end
