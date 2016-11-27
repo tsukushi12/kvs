@@ -4,4 +4,5 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem "sinatra"
-gem 'pry'
+gem "pry"
+gem "pry-byebug"

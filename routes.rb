@@ -1,6 +1,6 @@
 require 'json'
-#require './mydb'
 require 'sinatra'
+require 'pry'
 
   autoload :MyIO,       './lib/myio'
   autoload :MyFile,     './lib/myfile'
@@ -41,8 +41,10 @@ require 'sinatra'
   end
 
   post '/save_hash' do
+    binding.pry
     if params.kind_of?(Hash)
       MyIO.create(params)
+      "successful"
     else
       'TypeError'
     end
