@@ -41,7 +41,6 @@ require 'sinatra'
   end
 
   post '/save_hash' do
-    params = json.parse(request.body.read)
     if params.kind_of?(Hash)
       MyIO.create(params)
     else
