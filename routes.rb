@@ -27,7 +27,8 @@ require 'pry'
   get '/get/:key/:any' do
     num = params[:any] || 0
 
-    MyIO.get(params[:key], num.to_i)
+    result = MyIO.get(params[:key], num.to_i)
+    result.to_json
   end
 
   post '/save_ary/:key' do
@@ -41,7 +42,6 @@ require 'pry'
   end
 
   post '/save_hash' do
-    binding.pry
     if params.kind_of?(Hash)
       MyIO.create(params)
       "successful"
