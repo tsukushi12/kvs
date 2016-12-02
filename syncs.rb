@@ -1,17 +1,14 @@
 require 'json'
 require 'fileutils'
+require 'pry'
 class File
 	def self.conflict(fp1, fp2)
 		f1 = File.open(fp1, "r"){|f| f.readlines}
 		f2 = File.open(fp2, "r"){|f| f.readlines}
 		f = f1 | f2
-		f.sort{|a,b| Json.parse(a)["time"] <=> JSON.parse(b)["time"]}.join("\n")
+		f.sort{|a,b| JSON.parse(a)["time"] <=> JSON.parse(b)["time"]}.join("")
 	end
 end
-
-
-
-
 
 
 lfiles = Dir.chdir("./db/"){
@@ -29,14 +26,12 @@ conflict_files.each{|f|
 	lf = f.sub('./', './db/')
 	rf = f.sub('./', './db2/')
 	if File.size(lf) != File.size(rf)
-		File.open(lf, "w"){|f|
-			f.write File.conflict(lf, rf)
-		}
-
+			result = File.conflict(lf, rf)
+			File.open(lf, "w"){|f| f.write result}
 	end
 }
-new_files{|f|
+new_files.each{|f|
 	lf = f.sub('./', './db/')
 	rf = f.sub('./', './db2/')
-	FileUtils(rf, lf)
+	FileUtils.cp(rf, lf)
 }
