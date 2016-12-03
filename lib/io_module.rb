@@ -5,7 +5,7 @@
     def create(hash)
       kv_parse(hash){|key, value|
         MyFile.open(key, "a+"){|f|
-          f.write(value.to_json + " " + now + "\n")
+          f.write({key => value, :time => now})
         }
       }
     end
@@ -13,7 +13,9 @@
     def get(key, any = 1)
       if exists?(key)
         f = MyFile.open(key){|f|
-          f.readlines[-any..-1].join("\n")
+          rs = f.readlines
+          any = rs.size if rs.size < any
+          rs[-any..-1]
         }
       else
         "not found such key"

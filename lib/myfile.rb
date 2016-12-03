@@ -12,10 +12,8 @@ require 'fileutils'
 
     def initialize(key, mode = "r")
       @key = key
-      @dirpath = MyFile.to_dir(@key)
-      mkdir(@dirpath)
-      @filepath = new_filepath(@dirpath)
-#      touch(@filepath)
+      @filepath = MyFile.to_path(@key)
+      mkdir(@filepath)
 
       super(@filepath, mode)
     end
@@ -24,7 +22,7 @@ require 'fileutils'
       super MyFile.parse(key)
     end
 
-    def self.to_dir(key)
+    def self.to_path(key)
       path = Digest::MD5.hexdigest(key)
       path.insert(8, "/")
       path.insert(17, "/")
@@ -33,23 +31,14 @@ require 'fileutils'
       Config::DBDir + path
     end
 
-    def new_filepath(dirpath)
-      filepth = dirpath + "/"  Time.now.strftime("%s%L")
-      loop do
-        if MyFile.exists?(filepath)
-          filepath.succ
-        else
-          filepath
-        end
-      end
-    end
     def self.exists?(key)
-      path = parse(key)
+      path = MyFile.to_path(key)
       File.exists?(path)
     end
 
     private
-    def mkdir(dir)
+    def mkdir(filepath)
+      dir = File.dirname(filepath)
       unless Dir.exists?(dir)
         FileUtils.mkdir_p(dir)
       end

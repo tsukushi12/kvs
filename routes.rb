@@ -1,7 +1,7 @@
 require 'json'
 #require './mydb'
 require 'sinatra'
-
+require 'pry'
   autoload :MyIO,       './lib/myio'
   autoload :MyFile,     './lib/myfile'
   autoload :IOModule,   './lib/io_module'
@@ -42,10 +42,8 @@ require 'sinatra'
   end
 
   post '/save_hash' do
-<<<<<<< HEAD
-    params = json.parse(request.body.read)
-=======
->>>>>>> b95289ae5a035e400a4cb9ea75ea209920ffbac5
+    binding.pry
+
     if params.kind_of?(Hash)
       MyIO.create(params)
     else
