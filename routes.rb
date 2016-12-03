@@ -48,6 +48,7 @@ require 'pry'
 
     if params.kind_of?(Hash)
       MyIO.create(params)
+      "successful"
     else
       'TypeError'
     end
