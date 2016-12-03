@@ -1,16 +1,26 @@
 require 'json'
-#require './mydb'
 require 'sinatra'
-require 'pry'
+require 'net/http'
+
   autoload :MyIO,       './lib/myio'
   autoload :MyFile,     './lib/myfile'
   autoload :IOModule,   './lib/io_module'
   autoload :HashIO,     './lib/hashio'
 
 
-  get '/user' do
+  get '/user/form' do
     erb :u_form
+  end
 
+  post '/user/add' do
+    uname = params["uform"]
+    res = Net::HTTP.get URI.parse("http://52.69.204.205:3000/repo/#{uname}")
+    res = JSON.parse(res)
+    if res["url"] != nil
+      Dir.chdir('../'){
+        system "git clone #{res['url']}"
+      }
+    end
   end
 
   get '/form' do
