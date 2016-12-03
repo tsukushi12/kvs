@@ -1,8 +1,4 @@
 # Ignore DB files
-/db/*
-/db2/*
-<<<<<<< HEAD
-=======
+
 /.idea
 /.cshrc
->>>>>>> 5ae6669eab3fd22ca70158285aba6e9b01a8d92f
