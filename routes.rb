@@ -8,7 +8,10 @@ require 'pry'
   autoload :HashIO,     './lib/hashio'
 
 
+  get '/user' do
+    erb :u_form
 
+  end
 
   get '/form' do
 
