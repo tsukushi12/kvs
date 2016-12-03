@@ -27,7 +27,8 @@ require 'sinatra'
   get '/get/:key/:any' do
     num = params[:any] || 0
 
-    MyIO.get(params[:key], num.to_i)
+    result = MyIO.get(params[:key], num.to_i)
+    result.to_json
   end
 
   post '/save_ary/:key' do
@@ -41,7 +42,10 @@ require 'sinatra'
   end
 
   post '/save_hash' do
+<<<<<<< HEAD
     params = json.parse(request.body.read)
+=======
+>>>>>>> b95289ae5a035e400a4cb9ea75ea209920ffbac5
     if params.kind_of?(Hash)
       MyIO.create(params)
     else
