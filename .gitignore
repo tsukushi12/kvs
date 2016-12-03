@@ -1,6 +1,6 @@
 # Ignore DB files
 /db/*
-
+/db2/*
 <<<<<<< HEAD
 =======
 /.idea

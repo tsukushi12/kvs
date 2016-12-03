@@ -42,7 +42,6 @@ require 'pry'
   end
 
   post '/save_hash' do
-    binding.pry
 
     if params.kind_of?(Hash)
       MyIO.create(params)

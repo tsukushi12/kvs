@@ -1,6 +1,6 @@
 require 'net/http'
 require './config'
-
+require 'json'
 class Hash
 	def save
 		http = Net::HTTP.new(Config::KvsHost, Config::KvsPort)
@@ -14,5 +14,6 @@ class Hash
 		http = Net::HTTP.new(Config::KvsHost, Config::KvsPort)
 		req = Net::HTTP::Get.new("/get/#{key}/#{any}")
 		res = http.request(req).body
+		JSON.parse(res)
 	end
 end

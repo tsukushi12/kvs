@@ -1,3 +1,4 @@
+require 'json'
 
   module IOModule
 
@@ -5,7 +6,7 @@
     def create(hash)
       kv_parse(hash){|key, value|
         MyFile.open(key, "a+"){|f|
-          f.write({key => value, :time => now})
+          f.write({key => value, :time => now}.to_json)
         }
       }
     end
@@ -15,7 +16,7 @@
         f = MyFile.open(key){|f|
           rs = f.readlines
           any = rs.size if rs.size < any
-          rs[-any..-1]
+          rs[-any..-1].map{|t| JSON.parse(t)}
         }
       else
         "not found such key"
