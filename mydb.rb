@@ -1,5 +1,5 @@
 require 'net/http'
-require './config'
+require_relative './config'
 require 'json'
 class Hash
 	def save
@@ -15,5 +15,8 @@ class Hash
 		req = Net::HTTP::Get.new("/get/#{key}/#{any}")
 		res = http.request(req).body
 		JSON.parse(res)
+
+		rescue JSON::ParserError
+			res
 	end
 end
