@@ -14,6 +14,8 @@ class Hash
 		http = Net::HTTP.new(Config::KvsHost, Config::KvsPort)
 		req = Net::HTTP::Get.new("/get/#{key}/#{any}")
 		res = http.request(req).body
+
+		return res if res[0..2] =="not"
 		JSON.parse(res)
 
 		rescue JSON::ParserError

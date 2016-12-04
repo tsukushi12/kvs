@@ -6,7 +6,7 @@ require 'json'
     def create(hash)
       kv_parse(hash){|key, value|
         MyFile.open(key, "a+"){|f|
-          f.write({key => value, :time => now}.to_json)
+          f.puts({key => value, :time => now}.to_json)
         }
       }
     end

@@ -1,6 +1,5 @@
 require 'json'
 require 'fileutils'
-require 'pry'
 require './config.rb'
 
 class File
@@ -16,6 +15,7 @@ loop do
 sleep(10)
 
 rdir = Config::Master + ":" + Config::MasterDir
+sdir = Config::Master + ":" + Config::MasterStatus
 system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}' #{rdir} ./db2/")
 
 lfiles = Dir.chdir(Config::DBDir){
@@ -57,5 +57,5 @@ File.open("./status/#{hostname}.log", "a"){|f|
 
 
 system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}' ./db/ #{rdir}")
-system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}' ./status/ #{Config::MasterStatus}")
+system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}' ./status/ #{sdir}")
 end
