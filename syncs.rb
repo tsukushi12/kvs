@@ -3,10 +3,6 @@ require 'fileutils'
 require 'pry'
 require './config.rb'
 
-rdir = Config::Master + ":" + Config::MasterDir
-system("rsync -uvrz --inplace --progress -e 'ssh -i #{Config::SSHKey}' #{rdir} ./db2/")
-
-=begin
 class File
 	def self.conflict(fp1, fp2)
 		f1 = File.open(fp1, "r"){|f| f.readlines}
@@ -16,6 +12,11 @@ class File
 	end
 end
 
+loop do
+sleep(10)
+
+rdir = Config::Master + ":" + Config::MasterDir
+system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}' #{rdir} ./db2/")
 
 lfiles = Dir.chdir(Config::DBDir){
 	`find  . -name "*" -type f`.split("\n")
@@ -30,7 +31,7 @@ new_files = rfiles - lfiles
 
 conflict_files.each{|f|
 	lf = f.sub('./', Config::DBDir)
-	rf = f.sub('./', Config::SubDIr)
+	rf = f.sub('./', Config::SubDir)
 	if File.size(lf) != File.size(rf)
 			result = File.conflict(lf, rf)
 			File.open(lf, "w"){|f| f.write result}
@@ -41,4 +42,20 @@ new_files.each{|f|
 	rf = f.sub('./', Config::DubDir)
 	FileUtils.cp(rf, lf)
 }
-=end
+
+
+
+hostname = `hostname`.chomp
+file_size = `du -s ./db/`.split("\t")[0]
+cpu_temp = `cat /sys/class/thermal/thermal_zone0/temp`.chomp
+now = Time.now.to_i.to_s
+File.open("./db/#{hostname}.log", "a"){|f|
+
+        f.puts [now, cpu_temp, file_size].join(" ")
+
+}
+
+
+system("rsync -uvrz --inplace -e 'ssh -i #{Config::SSHKey}'./db/ #{rdir}")
+
+end
