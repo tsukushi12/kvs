@@ -39,7 +39,7 @@ conflict_files.each{|f|
 }
 new_files.each{|f|
 	lf = f.sub('./', Config::DBDir)
-	rf = f.sub('./', Config::DubDir)
+	rf = f.sub('./', Config::SubDir)
 	FileUtils.cp(rf, lf)
 }
 
