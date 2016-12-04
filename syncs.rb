@@ -40,6 +40,7 @@ conflict_files.each{|f|
 new_files.each{|f|
 	lf = f.sub('./', Config::DBDir)
 	rf = f.sub('./', Config::SubDir)
+	FileUtils.mkdir_p(File.dirname(lf))
 	FileUtils.cp(rf, lf)
 }
 
