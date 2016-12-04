@@ -3,6 +3,10 @@ require 'fileutils'
 require 'pry'
 require './config.rb'
 
+rdir = Config::Master + ":" + Config::MasterDir
+system("rsync -uvrz --inplace --progress -e 'ssh -i #{Config::SSHKey}' #{rdir} ./db2/")
+
+=begin
 class File
 	def self.conflict(fp1, fp2)
 		f1 = File.open(fp1, "r"){|f| f.readlines}
@@ -37,3 +41,4 @@ new_files.each{|f|
 	rf = f.sub('./', Config::DubDir)
 	FileUtils.cp(rf, lf)
 }
+=end
