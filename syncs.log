@@ -1,130 +1,28 @@
 receiving incremental file list
-.PE08.log.swp
 
-sent 79 bytes  received 109 bytes  376.00 bytes/sec
-total size is 4,096  speedup is 21.79
+sent 23 bytes  received 184 bytes  138.00 bytes/sec
+total size is 4,585  speedup is 22.15
 sending incremental file list
-aab9e1de/
-aab9e1de/16f38176/
-aab9e1de/16f38176/f86d7a92/
-aab9e1de/16f38176/f86d7a92/ba337a8d
 
-sent 275 bytes  received 47 bytes  214.67 bytes/sec
-total size is 4,136  speedup is 12.84
+sent 184 bytes  received 15 bytes  132.67 bytes/sec
+total size is 4,585  speedup is 23.04
 sending incremental file list
 PE08.log
 
-sent 198 bytes  received 53 bytes  167.33 bytes/sec
-total size is 1,659  speedup is 6.61
-receiving incremental file list
-aab9e1de/
-aab9e1de/16f38176/
-aab9e1de/16f38176/f86d7a92/
-aab9e1de/16f38176/f86d7a92/ba337a8d
-
-sent 55 bytes  received 271 bytes  652.00 bytes/sec
-total size is 4,136  speedup is 12.69
-sending incremental file list
-aab9e1de/16f38176/f86d7a92/ba337a8d
-
-sent 304 bytes  received 44 bytes  232.00 bytes/sec
-total size is 4,223  speedup is 12.14
-sending incremental file list
-PE08.log
-
-sent 200 bytes  received 53 bytes  506.00 bytes/sec
-total size is 1,679  speedup is 6.64
+sent 123 bytes  received 125 bytes  165.33 bytes/sec
+total size is 20  speedup is 0.08
 receiving incremental file list
 aab9e1de/16f38176/f86d7a92/ba337a8d
 
-sent 52 bytes  received 299 bytes  234.00 bytes/sec
-total size is 4,223  speedup is 12.03
+sent 52 bytes  received 446 bytes  332.00 bytes/sec
+total size is 4,630  speedup is 9.30
 sending incremental file list
 aab9e1de/16f38176/f86d7a92/ba337a8d
 
-sent 315 bytes  received 44 bytes  239.33 bytes/sec
-total size is 4,263  speedup is 11.87
+sent 225 bytes  received 44 bytes  107.60 bytes/sec
+total size is 4,630  speedup is 17.21
 sending incremental file list
 PE08.log
 
-sent 204 bytes  received 53 bytes  514.00 bytes/sec
-total size is 1,699  speedup is 6.61
-receiving incremental file list
-aab9e1de/16f38176/f86d7a92/ba337a8d
-
-sent 52 bytes  received 310 bytes  241.33 bytes/sec
-total size is 4,263  speedup is 11.78
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  135.33 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 210 bytes  received 53 bytes  526.00 bytes/sec
-total size is 1,719  speedup is 6.54
-receiving incremental file list
-
-sent 23 bytes  received 187 bytes  140.00 bytes/sec
-total size is 4,263  speedup is 20.30
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  406.00 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 213 bytes  received 53 bytes  532.00 bytes/sec
-total size is 1,739  speedup is 6.54
-receiving incremental file list
-
-sent 23 bytes  received 187 bytes  140.00 bytes/sec
-total size is 4,263  speedup is 20.30
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  406.00 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 215 bytes  received 53 bytes  178.67 bytes/sec
-total size is 1,759  speedup is 6.56
-receiving incremental file list
-
-sent 23 bytes  received 187 bytes  140.00 bytes/sec
-total size is 4,263  speedup is 20.30
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  406.00 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 219 bytes  received 53 bytes  181.33 bytes/sec
-total size is 1,779  speedup is 6.54
-receiving incremental file list
-
-sent 23 bytes  received 187 bytes  420.00 bytes/sec
-total size is 4,263  speedup is 20.30
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  406.00 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 221 bytes  received 53 bytes  182.67 bytes/sec
-total size is 1,799  speedup is 6.57
-receiving incremental file list
-
-sent 23 bytes  received 187 bytes  420.00 bytes/sec
-total size is 4,263  speedup is 20.30
-sending incremental file list
-
-sent 188 bytes  received 15 bytes  135.33 bytes/sec
-total size is 4,263  speedup is 21.00
-sending incremental file list
-PE08.log
-
-sent 226 bytes  received 53 bytes  186.00 bytes/sec
-total size is 1,819  speedup is 6.52
+sent 135 bytes  received 41 bytes  117.33 bytes/sec
+total size is 40  speedup is 0.23
